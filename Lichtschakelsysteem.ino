@@ -41,7 +41,9 @@ void setup()
   NTPsync();
   RemoteReceiver::init(0, 1, translateCode);
   digitalClockDisplay();
-  analogWrite(5, 100);
+  analogWrite(3, 100); //R
+  analogWrite(5, 100); //G
+  analogWrite(6, 100); //B
 }
 
 void loop()
