@@ -52,4 +52,5 @@ void loop()
 {
   wdt_reset();
   HTMLserver();
+  ntpsync.check();
 }

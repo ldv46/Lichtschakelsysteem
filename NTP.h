@@ -1,5 +1,4 @@
-const int NTP_PACKET_SIZE= 48; 				// NTP time stamp is in the first 48 bytes of the message
-byte packetBuffer[NTP_PACKET_SIZE]; 			// buffer to hold incoming and outgoing packets 
+byte packetBuffer[48]; 			// buffer to hold incoming and outgoing packets 
 const char* host = "0.nl.pool.ntp.org";			// Use random servers through DNS
 IPAddress rem_add;
 unsigned long epochDST;
@@ -7,7 +6,7 @@ unsigned long epochDST;
 unsigned long sendNTPpacket(IPAddress& address)
 {
   // set all bytes in the buffer to 0
-  memset(packetBuffer, 0, NTP_PACKET_SIZE); 
+  memset(packetBuffer, 0, 48); 
   // Initialize values needed to form NTP request
   packetBuffer[0] = 0b11100011;	  // LI, Version, Mode
   packetBuffer[1] = 0;	   // Stratum, or type of clock
@@ -21,7 +20,7 @@ unsigned long sendNTPpacket(IPAddress& address)
   // all NTP fields have been given values, now
   // you can send a packet requesting a timestamp: 
   udp.beginPacket(address, 123); //NTP requests are to port 123
-  udp.write(packetBuffer,NTP_PACKET_SIZE);
+  udp.write(packetBuffer, 48);
   udp.endPacket(); 
 }
 
@@ -43,7 +42,7 @@ int adjustDstEurope(){  //Zomer/wintertijd correctie
 
 void NTPontvang(){
   if ( udp.parsePacket() && ntpcheck == 1) {  // We've received a packet, read the data from it
-    udp.read(packetBuffer,NTP_PACKET_SIZE);	 // read the packet into the buffer
+    udp.read(packetBuffer, 48);	 // read the packet into the buffer
     //the timestamp starts at byte 40 of the received packet and is four bytes,
     // or two words, long. First, esxtract the two words:
     unsigned long highWord = word(packetBuffer[40], packetBuffer[41]);
@@ -75,10 +74,6 @@ void NTPsync(){
       if(tijdcheck == 1){
        RTC.set(now());
       }
-      Serial.println(F("Tijd aangepast naar:"));
-      if(hour() < 10)Serial.print("0");Serial.print(hour()); Serial.print(":");if(minute() < 10)Serial.print("0");Serial.print(minute());
-      Serial.print(" ");
-      Serial.print(day());Serial.print("/");Serial.print(month());Serial.print("/");Serial.println(year());
      }else{
       Serial.print(F("DNS fail..."));
       ntpcheck = 0;
