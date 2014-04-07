@@ -1,7 +1,11 @@
 void EEPROMinit(){
-  eepromwl.write(32, 223);
-  if(eepromwl.read(32) == 223){
+  eepromwl.write(31, 223);
+  if(eepromwl.read(31) == 223){
   }else{
-    while(true);
+    while(true){
+      analogWrite(3, 100); //R
+      analogWrite(5, 0); //G
+      analogWrite(6, 0); //B
+    }
   }
 }
