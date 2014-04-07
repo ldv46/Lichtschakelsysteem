@@ -57,15 +57,12 @@ void NTPontvang(){
     if(tijdcheck == 0)setTime(epoch); //Wanneer geen RTC eerst tijd instellen met ntpsync, daarna corrigeren voor zomer/winter tijd 
     epochDST = epoch + adjustDstEurope();
     // print Unix time:
-    Serial.print("Unix tijd (UTC + DST) = ");Serial.println(epochDST);
   }
 }
   
 void NTPsync(){
   wdt_reset();
     if(Dns.getHostByName(host, rem_add) == 1 ){
-      Serial.println(F("DNS resolve..."));	 
-      Serial.print(host); Serial.print(F("  = ")); Serial.println(rem_add);
       sendNTPpacket(rem_add);
       ntpcheck = 1;
       delay(1000);
@@ -75,7 +72,6 @@ void NTPsync(){
        RTC.set(now());
       }
      }else{
-      Serial.print(F("DNS fail..."));
       ntpcheck = 0;
      }
 }

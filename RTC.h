@@ -25,7 +25,6 @@ void digitalClockDisplay(void)
 void RTCopstart(){
   setSyncProvider(RTC.get);   // the function to get the time from the RTC
   if(timeStatus() != timeSet){
-      Serial.println("Unable to sync with the RTC");
       analogWrite(3, 200);
       tijdcheck = 0;
   }

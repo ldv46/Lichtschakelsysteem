@@ -25,12 +25,4 @@ void translateCode(unsigned long receivedCode, unsigned int period) {
     actionTransmitter.sendSignal(18,'C',!lamp3status);
     lamp3status = !lamp3status;
   }
-  // Debug
-  while(RemoteReceiver::isReceiving()); // Wait for a free ether
-  Serial.print(F("Code: "));
-  Serial.print(receivedCode);
-  Serial.print(F(", period duration: "));
-  Serial.print(period);
-  Serial.println(F("us."));  
-  //*/
 }
