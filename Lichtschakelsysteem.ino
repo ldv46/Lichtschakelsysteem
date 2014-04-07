@@ -35,8 +35,10 @@ void setup()
   wdt_enable(WDTO_8S); 
   Serial.begin(9600);
   pinMode(3, OUTPUT);pinMode(5, OUTPUT);pinMode(6, OUTPUT); //(R/G/B)
-  pinMode(7, OUTPUT);
-  pinMode(2, INPUT);
+  pinMode(7, OUTPUT); //433Mhz zender
+  pinMode(2, INPUT); //433Mhz ontvanger
+  pinMode(4, OUTPUT); //SS SDkaart
+  pinMode(10, OUTPUT); //SS Ethernet 
   RTCopstart();
   NTPsync();
   RemoteReceiver::init(0, 1, translateCode);
