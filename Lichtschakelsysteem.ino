@@ -55,3 +55,23 @@ void loop()
   HTMLserver();
   ntpsync.check();
 }
+
+void LED(char kleur){
+  switch (kleur){
+    case 'R':
+      analogWrite(3, 100); //R
+      analogWrite(5, 0); //G
+      analogWrite(6, 0); //B
+      break;
+    case 'G':
+      analogWrite(3, 0); //R
+      analogWrite(5, 100); //G
+      analogWrite(6, 0); //B
+      break;
+    case 'B':
+      analogWrite(3, 0); //R
+      analogWrite(5, 0); //G
+      analogWrite(6, 100); //B
+      break;
+  }
+}

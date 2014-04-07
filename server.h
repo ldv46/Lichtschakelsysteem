@@ -13,25 +13,25 @@ void HTMLserver(){
         // so you can send a reply
         if (c == '\n' && currentLineIsBlank) {
           // send a standard http response header
-          client.println(F("HTTP/1.1 200 OK"));
-          client.println(F("Content-Type: text/html"));
-          client.println(F("Connection: close"));  // the connection will be closed after completion of the response
+          client.println("HTTP/1.1 200 OK");
+          client.println("Content-Type: text/html");
+          client.println("Connection: close");  // the connection will be closed after completion of the response
           client.println();
-          client.println(F("<!DOCTYPE HTML>"));
-          client.println(F("<html>"));
+          client.println("<!DOCTYPE HTML>");
+          client.println("<html>");
           client.print(day());client.print("/");client.print(month());client.print("/");client.print(year());
-          client.println(F("<br />"));
+          client.println("<br />");
           client.print(hour());client.print(":");client.print(minute());client.print(":");client.print(second());
-          client.println(F("<br />"));
-          client.print(F("Lamp 1 is "));
+          client.println("<br />");
+          client.print("Lamp 1 is ");
           client.print(lamp1status);
-          client.println(F("<br />"));
-          client.print(F("Lamp 2 is "));
+          client.println("<br />");
+          client.print("Lamp 2 is ");
           client.print(lamp2status);
-          client.println(F("<br />"));
-          client.print(F("Lamp 3 is "));
+          client.println("<br />");
+          client.print("Lamp 3 is ");
           client.print(lamp3status);       
-          client.println(F("</html>"));
+          client.println("</html>");
           break;
         }
         if (c == '\n') {
