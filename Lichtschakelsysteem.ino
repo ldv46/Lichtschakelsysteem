@@ -28,6 +28,7 @@ DNSClient Dns;
 #include "netwerk.h"
 #include "NTP.h"
 #include "remote.h"
+#include "sdkaart.h"
 #include "server.h"
 
 void setup()
@@ -44,9 +45,8 @@ void setup()
   RTCopstart();
   NTPsync();
   RemoteReceiver::init(0, 1, translateCode);
-  analogWrite(3, 100); //R
-  analogWrite(5, 100); //G
-  analogWrite(6, 100); //B
+  SDinit();
+  LED('W');
 }
 
 void loop()
@@ -71,6 +71,11 @@ void LED(char kleur){
     case 'B':
       analogWrite(3, 0); //R
       analogWrite(5, 0); //G
+      analogWrite(6, 100); //B
+      break;
+    case 'W':
+      analogWrite(3, 100); //R
+      analogWrite(5, 100); //G
       analogWrite(6, 100); //B
       break;
   }
