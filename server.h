@@ -2,11 +2,10 @@ void HTMLserver(){
 // listen for incoming clients
   EthernetClient client = server.available();
   if (client) {
-    noInterrupts();
+    analogWrite(3, 100);
     // an http request ends with a blank line
     boolean currentLineIsBlank = true;
     while (client.connected()) {
-      analogWrite(3, 100);
       if (client.available()) {
         char c = client.read();
         Serial.write(c);
@@ -21,18 +20,18 @@ void HTMLserver(){
           client.println();
           client.println(F("<!DOCTYPE HTML>"));
           client.println(F("<html>"));
-            client.print(day());client.print("/");client.print(month());client.print("/");client.print(year());
-            client.println(F("<br />"));
-            client.print(hour());client.print(":");client.print(minute());client.print(":");client.print(second());
-            client.println(F("<br />"));
-            client.print(F("Lamp 1 is "));
-            client.print(lamp1status);
-             client.println(F("<br />"));
-            client.print(F("Lamp 2 is "));
-            client.print(lamp2status);
-            client.println(F("<br />"));
-            client.print(F("Lamp 3 is "));
-            client.print(lamp3status);       
+          client.print(day());client.print("/");client.print(month());client.print("/");client.print(year());
+          client.println(F("<br />"));
+          client.print(hour());client.print(":");client.print(minute());client.print(":");client.print(second());
+          client.println(F("<br />"));
+          client.print(F("Lamp 1 is "));
+          client.print(lamp1status);
+          client.println(F("<br />"));
+          client.print(F("Lamp 2 is "));
+          client.print(lamp2status);
+          client.println(F("<br />"));
+          client.print(F("Lamp 3 is "));
+          client.print(lamp3status);       
           client.println(F("</html>"));
           break;
         }
@@ -47,10 +46,9 @@ void HTMLserver(){
       }
     }
     // give the web browser time to receive the data
-    delay(100);
+    delay(1);
     // close the connection:
     client.stop();
-    interrupts();
     analogWrite(3, 0);
   }
 }
