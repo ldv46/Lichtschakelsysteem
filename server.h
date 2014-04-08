@@ -1,4 +1,4 @@
-#define BUFSIZ 100
+#define BUFSIZ 50
 
 void HTMLserver(){
   char clientline[BUFSIZ];
@@ -53,10 +53,6 @@ void HTMLserver(){
             client.println("Content-Type: image/jpeg");
           else if (strstr(filename, ".gif") != 0)
             client.println("Content-Type: image/gif");
-          else if (strstr(filename, ".3gp") != 0)
-            client.println("Content-Type: video/mpeg");
-          else if (strstr(filename, ".pdf") != 0)
-            client.println("Content-Type: application/pdf");
           else if (strstr(filename, ".js") != 0)
             client.println("Content-Type: application/x-javascript");
           else if (strstr(filename, ".xml") != 0)
