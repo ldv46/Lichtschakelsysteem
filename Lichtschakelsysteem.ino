@@ -45,6 +45,7 @@ void setup()
   EEPROMinit();
   RTCopstart();
   NTPsync();
+  Lampinit();
   RemoteReceiver::init(0, 1, translateCode);
   SDinit();
   LED('W');
@@ -83,6 +84,11 @@ void LED(char kleur){
       analogWrite(3, 20); //R
       analogWrite(5, 20); //G
       analogWrite(6, 20); //B
+      break;
+    case 'O': //Off (Uit)
+      analogWrite(3, 0); //R
+      analogWrite(5, 0); //G
+      analogWrite(6, 0); //B
       break;
   }
 }
