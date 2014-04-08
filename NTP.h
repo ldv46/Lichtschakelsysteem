@@ -70,7 +70,7 @@ void NTPsync(){
     if(tijdcheck == 1){
       RTC.set(now());
      }
-   }
+   }else if(tijdcheck == 0)while(true)LED('Y'); //Wanneer zowel RTC als NTP niet werken, stoppen
 }
 
 TimedAction ntpsync = TimedAction(1800000, NTPsync);
