@@ -20,6 +20,7 @@ ActionTransmitter actionTransmitter(7);
 #include "RTC.h"
 #include <SPI.h>      
 #include <SD.h>
+File bestand;
 #include <Ethernet.h>
 EthernetServer server(80);
 #include <Dns.h>
