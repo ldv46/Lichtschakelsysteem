@@ -61,12 +61,12 @@ void loop()
 
 void LED(char kleur){
   switch (kleur){
-    case 'R': //Rood (netwerk niet beschikbaar)
+    case 'R': //Rood (netwerkfout
       analogWrite(3, 60); //R
       analogWrite(5, 0); //G
       analogWrite(6, 0); //B
       break;
-    case 'G': //Groen (klaar voor gebruik)
+    case 'G': //Groen (alles OK)
       analogWrite(3, 0); //R
       analogWrite(5, 60); //G
       analogWrite(6, 0); //B
@@ -76,10 +76,20 @@ void LED(char kleur){
       analogWrite(5, 0); //G
       analogWrite(6, 60); //B
       break;
-    case 'Y': //Geel (RTC niet oke)
+    case 'Y': //Geel (RTC of NTP fout)
       analogWrite(3, 40); //R
       analogWrite(5, 20); //G
       analogWrite(6, 0); //B
+      break;
+    case 'C': //Geel (EEPROM fout)
+      analogWrite(3, 0); //R
+      analogWrite(5, 30); //G
+      analogWrite(6, 30); //B
+      break;
+    case 'M': //Geel (SD fout)
+      analogWrite(3, 30); //R
+      analogWrite(5, 0); //G
+      analogWrite(6, 30); //B
       break;
     case 'W': //Wit (netwerk in gebruik)
       analogWrite(3, 20); //R
