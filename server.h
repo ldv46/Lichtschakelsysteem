@@ -11,6 +11,7 @@ void HTMLserver(){
     boolean current_line_is_blank = true;
     index = 0;
     while (client.connected()) {
+      LED('W');
       if (client.available()) {
         char c = client.read();
         if (c != '\n' && c != '\r') {
@@ -109,6 +110,6 @@ void HTMLserver(){
     delay(1);
     // close the connection:
     client.stop();
-    analogWrite(3, 0);
+    LED('G');
   }
 }

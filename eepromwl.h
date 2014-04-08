@@ -14,6 +14,6 @@ void EEPROMinit(){
     lamp3status = eepromwl.read(3);
     lamp4status = eepromwl.read(4);
   }else{
-    while(true)LED('R');
+    while(true)LED('C');
   }
 }

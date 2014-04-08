@@ -49,11 +49,11 @@ void setup()
   Lampinit();
   RemoteReceiver::init(0, 1, translateCode);
   SDinit();
-  LED('W');
 }
 
 void loop()
 {
+  LED('G');
   wdt_reset();
   HTMLserver();
   ntpsync.check();
@@ -61,7 +61,7 @@ void loop()
 
 void LED(char kleur){
   switch (kleur){
-    case 'R': //Rood (netwerkfout
+    case 'R': //Rood (netwerkfout)
       analogWrite(3, 60); //R
       analogWrite(5, 0); //G
       analogWrite(6, 0); //B
@@ -81,12 +81,12 @@ void LED(char kleur){
       analogWrite(5, 20); //G
       analogWrite(6, 0); //B
       break;
-    case 'C': //Geel (EEPROM fout)
+    case 'C': //Cyaan (EEPROM fout)
       analogWrite(3, 0); //R
       analogWrite(5, 30); //G
       analogWrite(6, 30); //B
       break;
-    case 'M': //Geel (SD fout)
+    case 'M': //Magenta (SD fout)
       analogWrite(3, 30); //R
       analogWrite(5, 0); //G
       analogWrite(6, 30); //B
