@@ -1,7 +1,7 @@
 byte packetBuffer[48]; 			// buffer to hold incoming and outgoing packets 
 const char* host = "0.nl.pool.ntp.org";			// Use random servers through DNS
 IPAddress rem_add;
-unsigned long epochDST;
+unsigned long epoch;
 
 unsigned long sendNTPpacket(IPAddress& address)
 {
@@ -41,7 +41,7 @@ int adjustDstEurope(){  //Zomer/wintertijd correctie
 }
 
 void NTPontvang(){
-  if ( udp.parsePacket() && ntpcheck == 1) {  // We've received a packet, read the data from it
+  if (udp.parsePacket()) {  // We've received a packet, read the data from it
     udp.read(packetBuffer, 48);	 // read the packet into the buffer
     //the timestamp starts at byte 40 of the received packet and is four bytes,
     // or two words, long. First, esxtract the two words:
@@ -53,27 +53,24 @@ void NTPontvang(){
     // now convert NTP time into everyday time:
     // Unix time starts on Jan 1 1970. In seconds, that's 2208988800:
     const unsigned long seventyYears = 2208988800UL;	 
-    unsigned long epoch = secsSince1900 - seventyYears;	
+    epoch = secsSince1900 - seventyYears;	
     if(tijdcheck == 0)setTime(epoch); //Wanneer geen RTC eerst tijd instellen met ntpsync, daarna corrigeren voor zomer/winter tijd 
-    epochDST = epoch + adjustDstEurope();
+    epoch = epoch + adjustDstEurope();
     // print Unix time:
   }
 }
   
 void NTPsync(){
   wdt_reset();
-    if(Dns.getHostByName(host, rem_add) == 1 ){
-      sendNTPpacket(rem_add);
-      ntpcheck = 1;
-      delay(1000);
-      NTPontvang();
-      setTime(epochDST);
-      if(tijdcheck == 1){
-       RTC.set(now());
-      }
-     }else{
-      ntpcheck = 0;
+  if(Dns.getHostByName(host, rem_add) == 1 ){
+    sendNTPpacket(rem_add);
+    delay(1000);
+    NTPontvang();
+    setTime(epoch);
+    if(tijdcheck == 1){
+      RTC.set(now());
      }
+   }
 }
 
 TimedAction ntpsync = TimedAction(1800000, NTPsync);

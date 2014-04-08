@@ -33,7 +33,6 @@ DNSClient Dns;
 
 void setup()
 {
-  Netwerkinit();
   wdt_reset();
   wdt_enable(WDTO_8S); 
   pinMode(3, OUTPUT);pinMode(5, OUTPUT);pinMode(6, OUTPUT); //(R/G/B)
@@ -41,6 +40,8 @@ void setup()
   pinMode(2, INPUT); //433Mhz ontvanger
   pinMode(4, OUTPUT); //SS SDkaart
   pinMode(10, OUTPUT); //SS Ethernet
+  LED('B');
+  Netwerkinit();
   EEPROMinit();
   RTCopstart();
   NTPsync();
