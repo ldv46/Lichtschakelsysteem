@@ -59,24 +59,24 @@ void loop()
 void LED(char kleur){
   switch (kleur){
     case 'R': //Rood
-      analogWrite(3, 100); //R
+      analogWrite(3, 60); //R
       analogWrite(5, 0); //G
       analogWrite(6, 0); //B
       break;
     case 'G': //Groen
       analogWrite(3, 0); //R
-      analogWrite(5, 100); //G
+      analogWrite(5, 60); //G
       analogWrite(6, 0); //B
       break;
     case 'B': //Blauw
       analogWrite(3, 0); //R
       analogWrite(5, 0); //G
-      analogWrite(6, 100); //B
+      analogWrite(6, 60); //B
       break;
     case 'W': //Wit
-      analogWrite(3, 100); //R
-      analogWrite(5, 100); //G
-      analogWrite(6, 100); //B
+      analogWrite(3, 20); //R
+      analogWrite(5, 20); //G
+      analogWrite(6, 20); //B
       break;
   }
 }
