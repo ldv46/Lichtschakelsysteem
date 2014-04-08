@@ -59,22 +59,27 @@ void loop()
 
 void LED(char kleur){
   switch (kleur){
-    case 'R': //Rood
+    case 'R': //Rood (netwerk niet beschikbaar)
       analogWrite(3, 60); //R
       analogWrite(5, 0); //G
       analogWrite(6, 0); //B
       break;
-    case 'G': //Groen
+    case 'G': //Groen (klaar voor gebruik)
       analogWrite(3, 0); //R
       analogWrite(5, 60); //G
       analogWrite(6, 0); //B
       break;
-    case 'B': //Blauw
+    case 'B': //Blauw (lamp aan)
       analogWrite(3, 0); //R
       analogWrite(5, 0); //G
       analogWrite(6, 60); //B
       break;
-    case 'W': //Wit
+    case 'Y': //Geel (RTC niet oke)
+      analogWrite(3, 40); //R
+      analogWrite(5, 20); //G
+      analogWrite(6, 0); //B
+      break;
+    case 'W': //Wit (netwerk in gebruik)
       analogWrite(3, 20); //R
       analogWrite(5, 20); //G
       analogWrite(6, 20); //B
