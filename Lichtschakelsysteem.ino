@@ -9,7 +9,7 @@ Afstandsbediening op 9 (10010)
 #include "Time.h"
 #include "DS3232RTC.h"
 #include "EEPROMWearLeveler.h"
-EEPROMWearLeveler eepromwl(1024, 32);
+EEPROMWearLeveler eepromwl(4096, 128);
 #include "RemoteTransmitter.h"
 #include "RemoteReceiver.h"
 #include "TimedAction.h"
@@ -20,17 +20,17 @@ ActionTransmitter actionTransmitter(7);
 #include "RTC.h"
 #include <SPI.h>      
 #include <SD.h>
-File bestand;
 #include <Ethernet.h>
-EthernetServer server(80);
 #include <Dns.h>
 EthernetUDP udp; //Initialiseer UDP als udp
 DNSClient Dns;
+#include <Flash.h>
+#include "sdkaart.h"
+#include <TinyWebServer.h>
 #include "netwerk.h"
 #include "NTP.h"
 #include "remote.h"
-#include "sdkaart.h"
-#include "server.h"
+
 
 void setup()
 {
@@ -43,11 +43,11 @@ void setup()
   pinMode(10, OUTPUT); //SS Ethernet
   LED('B');
   Netwerkinit();
-  EEPROMinit();
+  //EEPROMinit();
   RTCopstart();
-  NTPsync();
-  Lampinit();
-  RemoteReceiver::init(0, 1, translateCode);
+  //NTPsync();
+  //Lampinit();
+//  RemoteReceiver::init(0, 1, translateCode);
   SDinit();
 }
 
@@ -55,7 +55,7 @@ void loop()
 {
   LED('G');
   wdt_reset();
-  HTMLserver();
+  web.process();
   ntpsync.check();
 }
 
