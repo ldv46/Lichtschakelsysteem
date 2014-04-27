@@ -13,16 +13,19 @@ void SDinit(){
     Serial << F("card failed\n");
     has_filesystem = false;
     LED('R');
+    delay(1000);
   }
   // initialize a FAT volume
   if (!volume.init(&card)) {
     Serial << F("vol.init failed!\n");
     has_filesystem = false;
     LED('R');
+    delay(1000);
   }
   if (!root.openRoot(&volume)) {
     Serial << F("openRoot failed");
     has_filesystem = false;
     LED('R');
+    delay(1000);
   }
 }
