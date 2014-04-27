@@ -27,7 +27,7 @@ void send_file_name(TinyWebServer& web_server, const char* filename) {
 
 boolean file_handler(TinyWebServer& web_server) {
   char* filename = TinyWebServer::get_file_from_path(web_server.get_path());
-  send_file_name(web_server, "index.html");
+  send_file_name(web_server, filename);
   free(filename);
   return true;
 }
@@ -43,7 +43,7 @@ boolean index_handler(TinyWebServer& web_server) {
 
 TinyWebServer::PathHandler handlers[] = {
   {"/", TinyWebServer::GET, &index_handler },
-  {"/index.html", TinyWebServer::GET, &file_handler },
+  {"/" "*", TinyWebServer::GET, &file_handler },
   {NULL},
 };
 
