@@ -42,17 +42,7 @@ TinyWebServer::PathHandler handlers[] = {
   {NULL},
 };
 
-boolean has_ip_address = false;
 TinyWebServer web = TinyWebServer(handlers, NULL);
-
-const char* ip_to_str(const uint8_t* ipAddr)
-{
-  static char buf[16];
-  sprintf(buf, "%d.%d.%d.%d\0", ipAddr[0], ipAddr[1], ipAddr[2], ipAddr[3]);
-  return buf;
-}
-
-
 
 void Netwerkinit(){ //Netwerk initialisatie
     Ethernet.begin(MAC, IP); //Alleen MAC voor DHCP
