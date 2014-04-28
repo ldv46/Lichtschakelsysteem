@@ -32,12 +32,19 @@ boolean file_handler(TinyWebServer& web_server) {
   return true;
 }
 
-
-
 boolean index_handler(TinyWebServer& web_server) {
-  web_server.send_error_code(200);
-  web_server.end_headers();
-  web_server << F("<html><body><h1>Hello World!</h1></body></html>\n");
+  if (file.open(&root, "index.html", O_READ)) {
+     web_server.send_content_type("text/html");
+     web_server.end_headers();
+     Serial << F("Index inladen");
+     web_server.send_file(file);
+     file.close();
+  }else {
+      web_server.send_content_type("text/plain");
+      web_server.end_headers();
+      Serial << F("Geen index.html gevonden!");
+      web_server << F("Geen index.html gevonden!") << "\n";
+  }
   return true;
 }
 
