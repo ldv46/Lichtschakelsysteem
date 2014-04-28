@@ -34,12 +34,14 @@ boolean file_handler(TinyWebServer& web_server) {
 
 boolean index_handler(TinyWebServer& web_server) {
   if (file.open(&root, "index.html", O_READ)) {
-     web_server.send_content_type("text/html");
-     web_server.end_headers();
-     Serial << F("Index inladen");
-     web_server.send_file(file);
-     file.close();
+    web_server.send_error_code(200);
+    web_server.send_content_type("text/html");
+    web_server.end_headers();
+    Serial << F("Index inladen");
+    web_server.send_file(file);
+    file.close();
   }else {
+      web_server.send_error_code(200);
       web_server.send_content_type("text/plain");
       web_server.end_headers();
       Serial << F("Geen index.html gevonden!");
