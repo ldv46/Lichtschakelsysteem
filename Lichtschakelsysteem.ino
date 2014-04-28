@@ -39,8 +39,10 @@ void setup()
   pinMode(3, OUTPUT);pinMode(5, OUTPUT);pinMode(6, OUTPUT); //(R/G/B)
   pinMode(7, OUTPUT); //433Mhz zender
   pinMode(2, INPUT); //433Mhz ontvanger
+  pinMode(SS_PIN, OUTPUT); //SS Ethernet
+  digitalWrite(SS_PIN, HIGH);
   pinMode(4, OUTPUT); //SS SDkaart
-  pinMode(10, OUTPUT); //SS Ethernet
+  digitalWrite(4, HIGH);
   LED('B');
   Netwerkinit();
   //EEPROMinit();
@@ -56,7 +58,7 @@ void loop()
   LED('G');
   wdt_reset();
   web.process();
-  ntpsync.check();
+//ntpsync.check();
 }
 
 void LED(char kleur){
