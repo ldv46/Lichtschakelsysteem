@@ -41,6 +41,8 @@ void setup()
   pinMode(2, INPUT); //433Mhz ontvanger
   pinMode(SS_PIN, OUTPUT); //SS Ethernet
   digitalWrite(SS_PIN, HIGH);
+  pinMode(10, OUTPUT); //SS Ethernet
+  digitalWrite(10, HIGH);
   pinMode(4, OUTPUT); //SS SDkaart
   digitalWrite(4, HIGH);
   LED('B');
