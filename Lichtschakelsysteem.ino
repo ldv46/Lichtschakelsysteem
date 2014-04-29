@@ -45,11 +45,11 @@ void setup()
   digitalWrite(4, HIGH);
   LED('B');
   Netwerkinit();
-  //EEPROMinit();
+  EEPROMinit();
   RTCopstart();
-  //NTPsync();
-  //Lampinit();
-//  RemoteReceiver::init(0, 1, translateCode);
+  NTPsync();
+  Lampinit();
+  RemoteReceiver::init(0, 1, translateCode);
   SDinit();
 }
 
@@ -58,7 +58,7 @@ void loop()
   LED('G');
   wdt_reset();
   web.process();
-//ntpsync.check();
+  ntpsync.check();
 }
 
 void LED(char kleur){
