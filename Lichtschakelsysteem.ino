@@ -46,13 +46,13 @@ void setup()
   pinMode(4, OUTPUT); //SS SDkaart
   digitalWrite(4, HIGH);
   LED('B');
+  SDinit();
   Netwerkinit();
   EEPROMinit();
   RTCopstart();
   NTPsync();
   Lampinit();
   RemoteReceiver::init(0, 1, translateCode);
-  SDinit();
 }
 
 void loop()

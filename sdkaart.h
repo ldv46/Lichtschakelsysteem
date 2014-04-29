@@ -6,7 +6,6 @@ SdFile file;
 const int sdChipSelect = 4;            // SD card chipSelect
 
 void SDinit(){
- digitalWrite(10, HIGH); // but turn off the W5100 chip!
   // initialize the SD card
   Serial << F("Setting up SD card...\n");
   if (!card.init(SPI_FULL_SPEED, 4)) {
