@@ -14,7 +14,7 @@ EEPROMWearLeveler eepromwl(4096, 128);
 #include "RemoteReceiver.h"
 #include "TimedAction.h"
 #include <avr/wdt.h>
-ActionTransmitter actionTransmitter(7);
+ActionTransmitter actionTransmitter(7, 157, 6);
 #include "variabelen.h"
 #include "eepromwl.h"
 #include "RTC.h"

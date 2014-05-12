@@ -6,15 +6,11 @@ unsigned long lamp4 = actionTransmitter.getTelegram(9,'B',false);
 void Lampinit(){
   LED('O');
   actionTransmitter.sendSignal(18,'A',lamp1status);
-  actionTransmitter.sendSignal(18,'A',lamp1status);
   LED('B');
-  actionTransmitter.sendSignal(18,'B',lamp2status);
   actionTransmitter.sendSignal(18,'B',lamp2status);
   LED('O');
   actionTransmitter.sendSignal(18,'C',lamp3status);
-  actionTransmitter.sendSignal(18,'C',lamp3status);
   LED('G');
-  actionTransmitter.sendSignal(18,'D',lamp4status);
   actionTransmitter.sendSignal(18,'D',lamp4status);
   LED('B');
 }
@@ -22,11 +18,11 @@ void Lampinit(){
 
 void translateCode(unsigned long receivedCode, unsigned int period) {
   // Enabled interrupts, so RemoteReceiver::isReceiving() can be used.
+  RemoteReceiver::disable();
   interrupts(); 
   // Compare the signals
   if (RemoteTransmitter::isSameCode(lamp1, receivedCode)) {
     while(RemoteReceiver::isReceiving()); // Wait for a free ether
-    actionTransmitter.sendSignal(18,'A',!lamp1status);
     actionTransmitter.sendSignal(18,'A',!lamp1status);
     lamp1status = !lamp1status;
     eepromwl.write(1, lamp1status);
@@ -34,13 +30,11 @@ void translateCode(unsigned long receivedCode, unsigned int period) {
   if (RemoteTransmitter::isSameCode(lamp2, receivedCode)) {  
     while(RemoteReceiver::isReceiving()); // Wait for a free ether
     actionTransmitter.sendSignal(18,'B',!lamp2status);
-    actionTransmitter.sendSignal(18,'B',!lamp2status);
     lamp2status = !lamp2status;
     eepromwl.write(2, lamp2status);
   }  
   if (RemoteTransmitter::isSameCode(lamp3, receivedCode)) {  
     while(RemoteReceiver::isReceiving()); // Wait for a free ether
-    actionTransmitter.sendSignal(18,'C',!lamp3status);
     actionTransmitter.sendSignal(18,'C',!lamp3status);
     lamp3status = !lamp3status;
     eepromwl.write(3, lamp3status);
@@ -48,8 +42,8 @@ void translateCode(unsigned long receivedCode, unsigned int period) {
   if (RemoteTransmitter::isSameCode(lamp4, receivedCode)) {  
     while(RemoteReceiver::isReceiving()); // Wait for a free ether
     actionTransmitter.sendSignal(18,'D',!lamp4status);
-    actionTransmitter.sendSignal(18,'D',!lamp4status);
     lamp4status = !lamp4status;
     eepromwl.write(4, lamp4status);
   }
+  RemoteReceiver::enable();
 }
