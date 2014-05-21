@@ -3,6 +3,8 @@ void RTCopstart(){
   if(timeStatus() != timeSet){
       LED('Y');
       tijdcheck = 0;
+      Serial.println("RTC niet gevonden");
   }
   tijdcheck = 1;
+  Serial.println("RTC geinitialiseerd");
 }

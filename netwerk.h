@@ -32,7 +32,7 @@ boolean file_handler(TinyWebServer& web_server) {
 }
 
 boolean index_handler(TinyWebServer& web_server) {
-  send_file_name(web_server, "INDEX.HTML");
+  send_file_name(web_server, "INDEX.HTM");
   return true;
 }
 
@@ -45,8 +45,35 @@ TinyWebServer::PathHandler handlers[] = {
 TinyWebServer web = TinyWebServer(handlers, NULL);
 
 void Netwerkinit(){ //Netwerk initialisatie
-    Ethernet.begin(MAC, IP); //Alleen MAC voor DHCP
+    Ethernet.begin(MAC, IP, DNS, GATEWAY, SUBNET); //Alleen MAC voor DHCP
     web.begin();
     Dns.begin(Ethernet.dnsServerIP()); //DNS
     udp.begin(5678); //zet UDP poort 5678
 }
+
+byte socketStat[MAX_SOCK_NUM];
+
+void ShowSockStatus()
+{
+  for (int i = 0; i < MAX_SOCK_NUM; i++) {
+    Serial.print(F("Socket#"));
+    Serial.print(i);
+    uint8_t s = W5100.readSnSR(i);
+    socketStat[i] = s;
+    Serial.print(F(":0x"));
+    Serial.print(s,16);
+    Serial.print(F(" "));
+    Serial.print(W5100.readSnPORT(i));
+    Serial.print(F(" D:"));
+    uint8_t dip[4];
+    W5100.readSnDIPR(i, dip);
+    for (int j=0; j<4; j++) {
+      Serial.print(dip[j],10);
+      if (j<3) Serial.print(".");
+    }
+    Serial.print(F("("));
+    Serial.print(W5100.readSnDPORT(i));
+    Serial.println(F(")"));
+  }
+}
+

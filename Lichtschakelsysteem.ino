@@ -21,6 +21,7 @@ ActionTransmitter actionTransmitter(7, 157, 6);
 #include <SPI.h>      
 #include <SD.h>
 #include <Ethernet.h>
+#include <utility/w5100.h>
 #include <Dns.h>
 EthernetUDP udp; //Initialiseer UDP als udp
 DNSClient Dns;
@@ -35,18 +36,20 @@ DNSClient Dns;
 void setup()
 {
   wdt_reset();
-  wdt_enable(WDTO_8S); 
+  wdt_enable(WDTO_8S);
+  Serial.begin(115200);
   pinMode(3, OUTPUT);pinMode(5, OUTPUT);pinMode(6, OUTPUT); //(R/G/B)
   pinMode(7, OUTPUT); //433Mhz zender
   pinMode(2, INPUT); //433Mhz ontvanger
   pinMode(SS_PIN, OUTPUT); //SS Ethernet
   digitalWrite(SS_PIN, HIGH);
   pinMode(10, OUTPUT); //SS Ethernet
-  digitalWrite(10, HIGH);
   pinMode(4, OUTPUT); //SS SDkaart
+  digitalWrite(10, HIGH);
   digitalWrite(4, HIGH);
   LED('B');
   SDinit();
+  LED('W');
   Netwerkinit();
   EEPROMinit();
   RTCopstart();
@@ -61,6 +64,9 @@ void loop()
   wdt_reset();
   web.process();
   ntpsync.check();
+  if(Serial.available()) {
+   if(Serial.read() == 'r') ShowSockStatus();
+  }
 }
 
 void LED(char kleur){
