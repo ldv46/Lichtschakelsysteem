@@ -7,8 +7,8 @@ lamp4status = 4
 */
 
 void EEPROMinit(){
-  eepromwl.write(31, 223);
-  if(eepromwl.read(31) == 223){
+  eepromwl.write(127, 223);
+  if(eepromwl.read(127) == 223){
     lamp1status = eepromwl.read(1);
     lamp2status = eepromwl.read(2);
     lamp3status = eepromwl.read(3);
