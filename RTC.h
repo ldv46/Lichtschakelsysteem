@@ -7,4 +7,5 @@ void RTCopstart(){
   } else {
   tijdcheck = 1;
   Serial.println("RTC geinitialiseerd");
+  }
 }
