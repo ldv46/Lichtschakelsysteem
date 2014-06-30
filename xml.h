@@ -29,6 +29,7 @@ boolean xml_handler(TinyWebServer& web_server) {
 }
 
 boolean lamp1_handler(TinyWebServer& web_server) {
+  web_server.send_error_code(200);
   elroTransmitter.sendSignal(31, lamp1,!lamp1status);
   lamp1status = !lamp1status;
   eepromwl.write(1, lamp1status);
