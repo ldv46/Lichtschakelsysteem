@@ -1,4 +1,5 @@
 boolean xml_handler(TinyWebServer& web_server) {
+    LED('W');
     Client& client = web_server.get_client();
     client.println("HTTP/1.1 200 OK");
     client.println("Content-Type: text/xml");
@@ -7,9 +8,9 @@ boolean xml_handler(TinyWebServer& web_server) {
     client.println("<?xml version=\"1.0\"?>");
     client.println("<Lampen>");
     client.print("  <DatumTijd>");
-    if(hour() < 10)client.print("0");client.print(hour()); client.print(":");if(minute() < 10)client.print("0");client.print(minute());
-    client.print(" ");
     client.print(day());client.print("/");client.print(month());client.print("/");client.print(year());
+    client.print(" ");
+    if(hour() < 10)client.print("0");client.print(hour()); client.print(":");if(minute() < 10)client.print("0");client.print(minute());client.print(":");if(second() < 10)client.print("0");client.print(second());
     client.println("</DatumTijd>");
     client.println("  <input-schakelaar>");
     client.print("    <schakelaar1>");client.print(lamp1status);client.println("</schakelaar1>");
