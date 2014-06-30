@@ -40,6 +40,7 @@ boolean index_handler(TinyWebServer& web_server) {
 TinyWebServer::PathHandler handlers[] = {
   {"/", TinyWebServer::GET, &index_handler },
   {"/" "status.xml*", TinyWebServer::GET, &xml_handler },
+  {"/" "lamp1", TinyWebServer::GET, &lamp1_handler },
   {"/" "*", TinyWebServer::GET, &file_handler },
   {NULL},
 };
