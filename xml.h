@@ -10,7 +10,7 @@ boolean xml_handler(TinyWebServer& web_server) {
     if(hour() < 10)client.print("0");client.print(hour()); client.print(":");if(minute() < 10)client.print("0");client.print(minute());
     client.print(" ");
     client.print(day());client.print("/");client.print(month());client.print("/");client.print(year());
-    client.println("/<DatumTijd>");
+    client.println("</DatumTijd>");
     client.println("  <input-schakelaar>");
     client.print("    <schakelaar1>");client.print(lamp1status);client.println("</schakelaar1>");
     client.print("    <schakelaar2>");client.print(lamp2status);client.println("</schakelaar2>");
