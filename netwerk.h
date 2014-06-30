@@ -2,6 +2,7 @@ boolean file_handler(TinyWebServer& web_server);
 boolean index_handler(TinyWebServer& web_server);
 
 void send_file_name(TinyWebServer& web_server, const char* filename) {
+  LED('W');
   if (!filename) {
     web_server.send_error_code(404);
     web_server << F("Could not parse URL");
@@ -38,6 +39,7 @@ boolean index_handler(TinyWebServer& web_server) {
 
 TinyWebServer::PathHandler handlers[] = {
   {"/", TinyWebServer::GET, &index_handler },
+  {"/" "status.xml", TinyWebServer::GET, &xml_handler },
   {"/" "*", TinyWebServer::GET, &file_handler },
   {NULL},
 };
@@ -45,6 +47,7 @@ TinyWebServer::PathHandler handlers[] = {
 TinyWebServer web = TinyWebServer(handlers, NULL);
 
 void Netwerkinit(){ //Netwerk initialisatie
+    LED('W');
     Ethernet.begin(MAC, IP, DNS, GATEWAY, SUBNET); //Alleen MAC voor DHCP
     web.begin();
     Dns.begin(Ethernet.dnsServerIP()); //DNS

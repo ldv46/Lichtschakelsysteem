@@ -9,13 +9,13 @@ void SDinit(){
   Serial << F("Setting up SD card...");
   if (!card.init(SPI_FULL_SPEED, 4)) {
     Serial << F("Card failed\n");
-    LED('R');
+    LED('M');
     delay(1000);
   } 
   // initialize a FAT volume
   if (!volume.init(&card)) {
     Serial << F("Vol.init failed!\n");
-    LED('R');
+    LED('M');
     delay(1000);
   } else {
     Serial.print("\nVolume type is FAT");
@@ -23,7 +23,7 @@ void SDinit(){
   }
   if (!root.openRoot(&volume)) {
     Serial << F("openRoot failed!\n");
-    LED('R');
+    LED('M');
     delay(1000);
   } else {
     root.ls(LS_R | LS_DATE | LS_SIZE); //debug inhoud SDkaart

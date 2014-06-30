@@ -10,19 +10,16 @@ char lamp3 = 'B';
 char lamp4 = 'C';
 
 void Lampinit(){
-  LED('O');
+  LED('B');
   elroTransmitter.sendSignal(31, lamp1,lamp1status);
-  LED('B');
   elroTransmitter.sendSignal(31, lamp2,lamp2status);
-  LED('O');
   elroTransmitter.sendSignal(31, lamp3,lamp3status);
-  LED('G');
   elroTransmitter.sendSignal(31, lamp4,lamp4status);
-  LED('B');
 }
 
 
 void translateCode(unsigned long receivedCode, unsigned int period) {
+  LED('B');
   // Signaal vergelijken
   if (RemoteTransmitter::isSameCode(lamp1code, receivedCode)) {
     elroTransmitter.sendSignal(31, lamp1,!lamp1status);
