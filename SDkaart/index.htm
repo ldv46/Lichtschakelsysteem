@@ -118,6 +118,14 @@
     		return xmlHttp.responseText;
     	}
 
+	function alloff(){
+        	var xmlHttp = null;
+    		xmlHttp = new XMLHttpRequest();
+    		xmlHttp.open( "GET", "alloff", true );
+    		xmlHttp.send( null );
+    		return xmlHttp.responseText;
+    	}
+
 </script>
 <!-- scripts tbv draaiknop --> 
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
@@ -292,12 +300,10 @@
 </div>
 <a name="5"></a>
 <div id="wrapper">
-<h1><a href="#Top"><img src="h2_05.png"/></a></h1>
+<h1><img src="h2_05.png"/></h1>
 	<div id="first">
-    	<form class="killformulier" name="kill" method="post" action="">
-			<input class="button" type="submit" name="kill" id="button" value="Alles uitschakelen">
-			</form>
-    </div>
+		<input class="button" type="submit" name="kill" id="button" value="Alles uitschakelen" onclick="alloff()">	
+    	</div>
 </div>
 
 <footer>
