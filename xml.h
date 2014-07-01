@@ -17,6 +17,8 @@ boolean xml_handler(TinyWebServer& web_server) {
     client.print("    <schakelaar2>");client.print(lamp2status);client.println("</schakelaar2>");
     client.print("    <schakelaar3>");client.print(lamp3status);client.println("</schakelaar3>");
     client.print("    <schakelaar4>");client.print(lamp4status);client.println("</schakelaar4>");
+    client.print("    <schakelaar5>");client.print(lamp5status);client.println("</schakelaar5>");
+    client.print("    <schakelaar6>");client.print(lamp6status);client.println("</schakelaar6>");
     client.println("  </input-schakelaar>");
     client.println("  <input-dimmer>");
     client.print("    <dimmer1>");client.print(20);client.println("</dimmer1>");
@@ -28,10 +30,9 @@ boolean xml_handler(TinyWebServer& web_server) {
     return true;
 }
 
-boolean lamp1_handler(TinyWebServer& web_server) {
-  web_server.send_error_code(200);
-  elroTransmitter.sendSignal(31, lamp1,!lamp1status);
-  lamp1status = !lamp1status;
-  eepromwl.write(1, lamp1status);
-  return true;
+boolean schakelaar_handler(TinyWebServer& web_server) {
+  char* filename = TinyWebServer::get_file_from_path(web_server.get_path());
+  Serial.print("Schakel:");Serial.println(filename);
+  Schakel(filename);
+  return true; 
 }

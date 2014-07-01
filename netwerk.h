@@ -26,7 +26,6 @@ void send_file_name(TinyWebServer& web_server, const char* filename) {
 
 boolean file_handler(TinyWebServer& web_server) {
   char* filename = TinyWebServer::get_file_from_path(web_server.get_path());
-  Serial << filename;
   send_file_name(web_server, filename);
   free(filename);
   return true;
@@ -40,7 +39,7 @@ boolean index_handler(TinyWebServer& web_server) {
 TinyWebServer::PathHandler handlers[] = {
   {"/", TinyWebServer::GET, &index_handler },
   {"/" "status.xml*", TinyWebServer::GET, &xml_handler },
-  {"/" "lamp1", TinyWebServer::GET, &lamp1_handler },
+  {"/" "schakelaar*", TinyWebServer::GET, &schakelaar_handler },
   {"/" "*", TinyWebServer::GET, &file_handler },
   {NULL},
 };
