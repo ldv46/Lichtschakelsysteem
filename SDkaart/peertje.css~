@@ -217,9 +217,11 @@ a:active {text-decoration:none; color:#2fccff;}
 }
 /* Einde formulier */
 /* killswitch formulier */
-.killbutton {
+.killformulier {
     font: 12px;
-    	border-radius: 10px;
+	border-radius: 10px;
+}
+.killformulier .button {
     background: red;
     border: none;
     padding: 10px 10px 10px 10px;
