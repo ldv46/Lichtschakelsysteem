@@ -1,0 +1,399 @@
+@charset "UTF-8";
+/* CSS Document */
+/* Menu */
+body {
+  background-color:#666;
+  color: #222;
+  font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+  font-size: 15px;
+  width:100%;
+  padding: 0px 50px 0px 50px;
+  }
+nav {
+  background-color: #fff;
+  border: 5px solid #fff;
+  border-radius: 10px;
+  display: block;
+  margin: 0px 0px 0px 0px;
+  overflow: hidden;
+  z-index:999;
+  position:fixed;
+}
+
+  nav ul {
+    margin: 0;
+    padding: 0;
+  }
+
+    nav ul li {
+      display: inline-block;
+      list-style-type: none;
+      
+      -webkit-transition: all 0.2s;
+        -moz-transition: all 0.2s;
+        -ms-transition: all 0.2s;
+        -o-transition: all 0.2s;
+        transition: all 0.2s; 
+    }
+      
+      nav > ul > li > a > .caret {
+        border-top: px solid #aaa;
+        border-right: 4px solid transparent;
+        border-left: 4px solid transparent;
+        content: "";
+        display: inline-block;
+        height: 0;
+        width: 0;
+        vertical-align: middle;
+  
+        -webkit-transition: color 0.1s linear;
+     	  -moz-transition: color 0.1s linear;
+       	-o-transition: color 0.1s linear;
+          transition: color 0.1s linear; 
+      }
+
+      nav > ul > li > a {
+        color: #aaa;
+        display: block;
+        line-height: 56px;
+        padding: 0 10px;
+        text-decoration: none;
+		cursor: default;
+      }
+	        
+
+/* EINDE menu */
+/* Containers */
+#wrapper {
+    width: 100%;
+    border: 0px solid black;
+    overflow: hidden; /* add this to contain floated children */
+}
+#first {
+    float:left; /* add this */
+	padding: 0px 20px 20px 10px
+}
+#second {
+    float: left; 
+	padding: 0px 20px 20px 10px
+}
+#border {
+    float: left; 
+	padding: 20px 20px 20px 20px;
+	border: 5px solid #fff;
+	border-radius: 10px;
+	background-color: #fff;
+}
+/* EINDE Containers */
+/* H1 - H5 */
+h1 {
+  font-weight: bold;
+  color: #fff;
+  font-size: 32px;
+  width: 100px;
+  padding: 100px 0px 0px 0px;
+}
+h2 {
+  font-weight: bold;
+  color: #fff;
+  font-size: 24px;
+  padding: 50px 0px 0px 0px;
+}
+h3 {
+  font-weight: bold;
+  color: #fff;
+  font-size: 18px;
+  padding: 25px 0px 0px 0px;
+}
+h4 {
+  font-weight: bold;
+  color: #fff;
+  font-size: 14px;
+  padding: 0px 0px 0px 0px;
+}
+h5 {
+  font-weight: bold;
+  color: #fff;
+  font-size: 10px;
+  padding: 0px 0px 0px 0px;
+}
+.schakelaarnaam {
+  color: #fff;
+  font-size: 18px;
+  font-weight: bold;
+  padding: 10px 0px 2px 0px;
+  text-decoration: none;
+}
+
+a:link {text-decoration:none; color:#2fccff;}
+a:visited {text-decoration:none; color:#2fccff;}
+a:hover {text-decoration:none; color:#2fccff;}
+a:active {text-decoration:none; color:#2fccff;}
+
+/* Einde H1 - H5 */
+/* Formulier */
+.formulier {
+    padding: 20px 20px 20px 20px;
+	background: #fff;
+	border-radius: 10px;
+	width: 100%;
+}
+.formulier label {
+    display: block;
+    margin: 5px 0px 0px 0px;
+	font-size:18px;
+}
+.formulier input[type="text"], 
+.formulier input[type="email"]{
+    border: 0px solid #000;
+	border-radius: 5px;
+    background: rgba(47, 204, 255, 0.30);
+    padding: 3px 3px 3px 3px;
+    margin-top: 2px;
+	margin-bottom: 2px;
+    height: 24px;
+    width: 90%;
+	font-size:18px;
+	color: #666;
+}
+.formulier input[type="number"]{
+    border: 0px solid #000;
+	border-radius: 5px;
+    background: rgba(47, 204, 255, 0.30);
+    padding: 3px 3px 3px 3px;
+    margin-top: 2px;
+    margin-bottom: 2px;
+    height: 24px;
+    width: 48%;
+	font-size:18px;
+	color: #666;
+}
+.formulier input[type="date"]{
+    border: 0px solid #000;
+	border-radius: 5px;
+    background: rgba(47, 204, 255, 0.30);
+	padding: 3px 3px 3px 3px;
+	margin-top: 2px;
+	margin-bottom: 2px;
+	height: 24px;
+	width: 90%;
+	font-size:18px;
+	color: #666;
+}
+.formulier select {
+    appearance:none;
+    -webkit-appearance:none; 
+    -moz-appearance: none;
+    text-indent: 0.01px;
+    text-overflow: '';
+    width: 48%;
+	border: 0px solid #000;
+	border-radius: 5px;
+	font-size:18px;
+    background: rgba(47, 204, 255, 0.30);
+	color: #666;
+} 
+.formulier textarea{
+    height:20px;
+}
+.formulier .button {
+    background: #2FCCFF;
+    border: none;
+    padding: 10px 10px 10px 10px;
+	border-radius: 10px;
+    color: #FFF;
+	font-size:14px;
+}
+.formulier .buttonfout {
+    background: rgba(47, 204, 255, 0.30);
+    border: none;
+    padding: 10px 10px 10px 10px;
+	border-radius: 10px;
+    color: #666;
+	font-size:14px;
+}
+::-webkit-input-placeholder {
+   color: #666;
+}
+/* Einde formulier */
+/* killswitch formulier */
+.killformulier {
+    font: 12px;
+	border-radius: 10px;
+}
+.killformulier .button {
+    background: red;
+    border: none;
+    padding: 10px 10px 10px 10px;
+	border-radius: 10px;
+    color: #FFF;
+	font-size:20px;
+	font-weight:bold;
+}
+::-webkit-input-placeholder {
+   color: #666;
+}
+/* Einde Killswitch formulier */
+/* Schuifknoppen */
+.onoffswitch {
+    position: relative; 
+	width: 225px;
+    -webkit-user-select:none; 
+	-moz-user-select:none; 
+	-ms-user-select: none;
+	z-index:1;
+}
+
+.onoffswitch-checkbox {
+    display: none;
+}
+
+.onoffswitch-label {
+    display: block;
+	overflow: hidden;
+	cursor: default;
+    border: 2px solid #FFFFF;
+	border-radius: 15px;
+}
+
+.onoffswitch-inner {
+    display: block;
+	width: 200%;
+	margin-left: -100%;
+    -moz-transition: margin 0.15s ease-in 0s; 
+	-webkit-transition: margin 0.15s ease-in 0s;
+    -o-transition: margin 0.15s ease-in 0s;
+	transition: margin 0.15s ease-in 0s;
+}
+
+.onoffswitch-inner:before, .onoffswitch-inner:after {
+    display: block;
+	float: left; 
+	width: 50%; 
+	height: 30px; 
+	padding: 0; 
+	line-height: 30px;
+    font-size: 20px; 
+	color: white; 
+	font-family: Trebuchet, Arial, sans-serif; 
+	font-weight: bold;
+    -moz-box-sizing: border-box; 
+	-webkit-box-sizing: border-box; 
+	box-sizing: border-box;
+}
+
+.onoffswitch-inner:before {
+    content: "AAN";
+    padding-left: 20px;
+    background-color: #2FCCFF; 
+	color: #FFFFFF;
+}
+
+.onoffswitch-inner:after {
+    content: "UIT";
+    padding-right: 20px;
+    background-color: #ffffff; 
+	color: #3c3c3b;
+    text-align: right;
+}
+/*
+.onoffswitch-switch {
+    display: block; width: 20px; margin: 5px;
+    background: #3c3c3b;
+    border: 2px solid #FFFFF; border-radius: 10px;
+    position: absolute; top: 0; bottom: 0; right: 191px;
+    -moz-transition: all 0.15s ease-in 0s; -webkit-transition: all 0.15s ease-in 0s;
+    -o-transition: all 0.15s ease-in 0s; transition: all 0.15s ease-in 0s; 
+}
+*/
+.onoffswitch-checkbox:checked + .onoffswitch-label .onoffswitch-inner {
+    margin-left: 0;
+}
+
+.onoffswitch-checkbox:checked + .onoffswitch-label .onoffswitch-switch {
+    right: 0px; 
+}
+/* Einde Schuifknoppen */
+/* Dimmer */
+input[type='range'] { /*balk*/ 
+	-webkit-appearance: none;
+	border-radius: 5px;
+	background-color: #ffffff;
+	height: 30px;
+	width: 180px;
+	vertical-align: middle;
+	
+}
+input[type='range']::-moz-range-track {
+	 -moz-appearance: none;
+	 border-radius: 5px;
+	 height: 10px;
+}
+input[type='range']::-webkit-slider-thumb { /*bal*/
+	 -webkit-appearance: none !important;
+	 border-radius: 10px;
+	 background-color: #2FCCFF;
+	 height: 20px;
+	 width: 20px;
+	 margin-left: 5px;
+	 margin-right: 5px;
+}
+input[type='range']::-moz-range-thumb {
+	 -moz-appearance: none;
+	 border-radius: 20px;
+	 background-color: #FFF;
+	 height: 25px;
+	 width: 25px;
+}
+/* EINDE Dimmer */
+
+/* Grafiekbreedte */
+.graph { width: 400px; height: 200px }
+/* Grafiekbreedte */
+
+
+/* Footer */
+
+footer {
+  background-color: #fff;
+  border: 1px solid #dedede;
+  border-radius: 10px;
+  box-shadow: 0 2px 2px -1px rgba(0, 0, 0, 0.055);
+  color: #888;
+  margin: 100px 0px 0px 0px;
+  overflow: hidden;
+  bottom:25px;
+  width: 325px;
+}
+
+  footer ul {
+    margin: o;
+    padding: 0;
+  }
+
+    footer ul li {
+      display: inline-block;
+      list-style-type: none;
+      
+      -webkit-transition: all 0.2s;
+        -moz-transition: all 0.2s;
+        -ms-transition: all 0.2s;
+        -o-transition: all 0.2s;
+        transition: all 0.2s; 
+    }
+ 
+
+      footer > ul > li > a {
+        color: #aaa;
+        line-height: 20px;
+        padding: 1px 1px 1px 10px;
+      }
+/* Einde Footer */#wrapper #first table tr {
+	color: #2fccff;
+}
+#wrapper #first table {
+	text-align: left;
+}
+#wrapper #first table {
+	text-align: left;
+}

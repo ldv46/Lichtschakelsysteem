@@ -1,0 +1,55 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>Peertje - Verbruiksmonitor</title>
+<!-- Koppeling CSS -->
+<link rel="stylesheet" href="peertje.css">
+<!-- schalen-->
+<meta name="viewport" content="width=300; minimum-scale=0.5; initial-scale=0.5; maximum-scale=1.0; " />
+<!-- Menu -->
+<nav>
+	<ul>
+		<li><a href="index.htm"><img src="h1_01.png" /></a></li>
+		<li><a href="index.htm#2"><img src="h1_02.png"/></a></li>
+		<li><a href="tijd.htm"><img src="h1_03.png"/></a></li>
+		<li><a href="energie.htm"><img src="h1_04.png"/></a></li>
+		<li><a href="index.htm#5"><img src="h1_05.png"/></a></li>
+	</ul>
+</nav>
+<!-- Einde menu -->
+<a name="1"></a>
+</head>
+
+<body>
+<a name="4"></a>
+<h1><img src="h2_04.png"/></h1>
+<div id="wrapper">
+	<div class="schakelaarnaam">Stroomverbruik</div>
+    	<div id="border">
+        	<script type="text/javascript" src="raphael.js"></script>
+			<script type="text/javascript" src="ico.min.js"></script>
+            	<div id="linegraph" class="graph"></div>
+					<script type="text/javascript">
+						new Ico.LineGraph(document.getElementById('linegraph'), {
+							dag: [75, 50, 66, 48, 70, 55, 47, 59, 67, 64],
+							nacht: [50, 66, 48, 70, 55, 47, 59, 67, 64, 75],
+							totaal: [125, 116, 114, 118, 125, 103, 105, 126, 131, 139],
+							}, {
+								markers: 'circle',
+								colours: { dag: '#2fccff', nacht: 'red', totaal: 'green',},
+								grid: true,
+								background_colour: '#fff',
+								show_vertical_labels: true,
+							});
+                     </script>
+		</div>
+</div>
+<footer>
+<ul>
+	<li><a href="#Top">Peertje | Het Lichtschakelsysteem van LdV46</a></li>
+</ul>
+</footer>
+
+</body>
+</html>
