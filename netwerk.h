@@ -40,6 +40,7 @@ TinyWebServer::PathHandler handlers[] = {
   {"/", TinyWebServer::GET, &index_handler },
   {"/" "status.xml*", TinyWebServer::GET, &xml_handler },
   {"/" "schakelaar*", TinyWebServer::GET, &schakelaar_handler },
+  {"/" "alloff*", TinyWebServer::GET, &alloff_handler },
   {"/" "*", TinyWebServer::GET, &file_handler },
   {NULL},
 };

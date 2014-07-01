@@ -36,3 +36,21 @@ boolean schakelaar_handler(TinyWebServer& web_server) {
   Schakel(filename);
   return true; 
 }
+
+boolean alloff_handler(TinyWebServer& web_server) {
+  Serial.print("Alle lampen uit");
+  lamp1status = 0;
+  eepromwl.write(1, lamp1status);
+  lamp2status = 0;
+  eepromwl.write(2, lamp2status);
+  lamp3status = 0;
+  eepromwl.write(3, lamp3status);
+  lamp4status = 0;
+  eepromwl.write(4, lamp4status);
+  lamp5status = 0;
+  eepromwl.write(5, lamp5status);
+  lamp6status = 0;
+  eepromwl.write(6, lamp6status);
+  Lampinit();
+  return true; 
+}
