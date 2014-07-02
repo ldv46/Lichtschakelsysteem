@@ -1,0 +1,85 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>Peertje - Daglichtschakelaars instellen</title>
+<!-- Koppeling CSS -->
+<link rel="stylesheet" href="peertje.css">
+<!-- schalen-->
+<meta name="viewport" content="width=300; minimum-scale=0.5; initial-scale=0.5; maximum-scale=1.0; " />
+<!-- Menu -->
+<nav>
+	<ul>
+		<li><a href="index.htm"><img src="h1_01.png" /></a></li>
+		<li><a href="index.htm#2"><img src="h1_02.png"/></a></li>
+		<li><a href="tijd.htm"><img src="h1_03.png"/></a></li>
+		<li><a href="energie.htm"><img src="h1_04.png"/></a></li>
+		<li><a href="index.htm#5"><img src="h1_05.png"/></a></li>
+	</ul>
+</nav>
+<!-- Einde menu -->
+</head>
+<body>
+<h1><img src="h2_03.png"/></h1>
+<div id="wrapper">
+	<div id="first">
+    	<div class="schakelaarnaam">Daglichtschakelaar</div>
+            <form class="formulier" name="daglichtschakelaar" method="post" action="GeenIDEE">
+                <label for="naam_daglichtschakelaar"/>
+        			<input type="text" name="naam_daglichtschakelaar" id="naam_daglichtschakelaar" placeholder="Naam schakelaar" required>              	
+          		<label for="dagen">Dagen</label>
+                    <select name="dagen" size="1" multiple id="dagen" required>
+          				<option value="maandag">maandag</option>
+ 			         	<option value="dinsdag">dinsdag</option>
+    	   			   	<option value="woensdag">woensdag</option>
+      			    	<option value="donderdag">donderdag</option>
+          				<option value="vrijdag">vrijdag</option>
+          				<option value="zaterdag">zaterdag</option>
+          				<option value="zondag">zondag</option>
+        			</select>
+          		<label for="lampen">Lampen</label>
+          			<select name="lampen" size="1" multiple id="lampen" required>
+          				<option value="schakelaar1">schakelaar 1</option>
+          				<option value="schakelaar2">schakelaar 2</option>
+          				<option value="schakelaar3">schakelaar 3</option>
+          				<option value="schakelaar4">schakelaar 4</option>
+          				<option value="schakelaar5">schakelaar 5</option>
+          				<option value="schakelaar6">schakelaar 6</option>
+        			</select>
+                <label for="dimmers">Dimmers</label>
+                	<input name="dimmers" type="number" id="dimmer1" min="0" max="100" step="10" placeholder="Dimmer 1" required/>
+                	<input name="dimmers" type="number" id="dimmer2" min="0" max="100" step="10" placeholder="Dimmer 2" required />
+                	<input name="dimmers" type="number" id="dimmer3" min="0" max="100" step="10" placeholder="Dimmer 3" required />
+                	<input name="dimmers" type="number" id="dimmer4" min="0" max="100" step="10" placeholder="Dimmer 4" required />
+                	<input name="dimmers" type="number" id="dimmer5" min="0" max="100" step="10" placeholder="Dimmer 5" required />
+                	<input name="dimmers" type="number" id="dimmer6" min="0" max="100" step="10" placeholder="Dimmer 6" required />                    
+                <label for="minuten">Minuten voor (-) / na (+) zonsondergang</label>
+        			<input name="minuten" type="number" id="minuten" min="-90" max="90" maxlength="2" placeholder="-90/+90"required>
+                <label for="datum_aan">Startdatum</label>
+                	<input type="date" name="datum_aan" id="datum_aan" placeholder="dd-mm-jjjj" required>
+                <label for="tijd_uit">Einddatum</label>
+        			<input type="date" name="tijd_uit" id="tijd_uit" placeholder="dd-mm-jjjj" required>
+                    <p>&nbsp;</p>
+             	<input class="button" name="submit" type="submit" id="submit" value="stel in">
+                <input class="buttonfout" name="reset" type="reset" id="submit" value="opnieuw">
+			</form>
+        </div>
+     </div>
+
+<div id="wrapper">
+	<div id="first">
+	<div class="schakelaarnaam">Ingestelde daglichtschakelaars</div>
+		<div id="border">
+            <a href="lijst.htm"><img src="h1_06.png"/></a>
+    	</div>
+    </div>
+</div>
+
+<footer>
+<ul>
+	<li><a href="#Top">Peertje | Het Lichtschakelsysteem van LdV46</a></li>
+</ul>
+</footer>
+
+</body>
+</html>

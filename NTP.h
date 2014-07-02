@@ -67,7 +67,8 @@ void NTPsync(){
     delay(1000);
     NTPontvang();
     setTime(epoch);
-    if(hour() < 10)Serial.print("0");Serial.print(hour()); Serial.print(":");if(minute() < 10)Serial.print("0");Serial.print(minute());
+    Serial.println("Netwerk tijd:");
+    if(hour() < 10)Serial.print("0");Serial.print(hour()); Serial.print(":");if(minute() < 10)Serial.print("0");Serial.print(minute());Serial.print(":");if(second() < 10)Serial.print("0");Serial.print(second());
     Serial.print(" ");
     Serial.print(day());Serial.print("/");Serial.print(month());Serial.print("/");Serial.println(year());
     if(tijdcheck == 1){

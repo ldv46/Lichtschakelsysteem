@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Lampen>
+	<DatumTijd>30/06/2014 15:59:18</DatumTijd>
+	<input-schakelaar>
+		<schakelaar1>0</schakelaar1> <!-- 1 (aan) of 0 (uit) -->
+		<schakelaar2>0</schakelaar2> <!-- 1 (aan) of 0 (uit) -->
+		<schakelaar3>1</schakelaar3> <!-- 1 (aan) of 0 (uit) -->
+		<schakelaar4>0</schakelaar4> <!-- 1 (aan) of 0 (uit) -->
+		<schakelaar5>1</schakelaar5> <!-- 1 (aan) of 0 (uit) -->
+		<schakelaar6>0</schakelaar6> <!-- 1 (aan) of 0 (uit) -->
+	</input-schakelaar>
+	<input-dimmer>
+		<dimmer1>10</dimmer1> <!-- waarde 0 - 100 -->
+		<dimmer2>20</dimmer2> <!-- waarde 0 - 100 -->
+		<dimmer3>30</dimmer3> <!-- waarde 0 - 100 -->
+		<dimmer4>40</dimmer4> <!-- waarde 0 - 100 -->
+		<dimmer5>50</dimmer5> <!-- waarde 0 - 100 -->
+		<dimmer6>60</dimmer6> <!-- waarde 0 - 100 -->
+	</input-dimmer>
+	<input-daglicht>
+		<daglicht-naam>avond</daglicht-naam> <!-- Logische naam van de daglichtschakelaar -->
+		<daglicht-dag>maandag, dinsdag, woensdag, donderdag, vrijdag</daglicht-dag> <!-- maandag - zondag -->
+		<daglicht-lamp>schakelaar1, schakelaar2</daglicht-lamp> <!-- aan-uit-schakelaars (1 - ..) -->
+		<daglicht-dimmer>dimmer1, dimmer3</daglicht-dimmer> <!-- dimmers (1 - ..) -->
+		<daglicht-minuten>-10</daglicht-minuten> <!-- minuten voor/na zonsondergang (-90 - +90) -->
+		<daglicht-startdatum>31-12-2014</daglicht-startdatum> <!-- dd-mm-jjjj -->
+		<daglicht-einddatum>01-01-2015</daglicht-einddatum> <!-- dd-mm-jjjj -->
+	</input-daglicht>
+</Lampen>

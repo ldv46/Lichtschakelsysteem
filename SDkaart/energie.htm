@@ -1,0 +1,74 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>Peertje - Meterstanden</title>
+<!-- Koppeling CSS -->
+<link rel="stylesheet" href="peertje.css">
+<!-- schalen-->
+<meta name="viewport" content="width=300; minimum-scale=0.5; initial-scale=0.5; maximum-scale=1.0; " />
+<!-- Menu -->
+<nav>
+	<ul>
+		<li><a href="index.htm"><img src="h1_01.png" /></a></li>
+		<li><a href="index.htm#2"><img src="h1_02.png"/></a></li>
+		<li><a href="tijd.htm"><img src="h1_03.png"/></a></li>
+		<li><a href="energie.htm"><img src="h1_04.png"/></a></li>
+		<li><a href="index.htm#5"><img src="h1_05.png"/></a></li>
+	</ul>
+</nav>
+<!-- Einde menu -->
+<a name="1"></a>
+</head>
+
+<body>
+<a name="4"></a>
+<h1><img src="h2_04.png"/></h1>
+<div id="wrapper">
+    <div id="first">
+        <div class="schakelaarnaam">Stroomverbruik</div>
+        	<form class="formulier" name="Stroomverbruik" method="post" action="">
+            	<label for="datum"/>
+        		<input type="date" name="datum" id="datum"placeholder="dd-mm-jjjj" required>
+           		<label for="nachtmeter"/>
+            	<input type="number" min="40000" step="0.1" name="nachtmeter" id="nachtmeter" placeholder="Nachtmeter" required>
+            	<label for="dagmeter"/>
+            	<input type="number" min="40000" step="0.1" name="dagmeter" id="dagmeter" placeholder="Dagmeter" required>
+                <br/>
+				<input class="button" type="submit" name="Stroomverbruik_klaar" id="button" value="opslaan">
+				<input class="buttonfout" type="reset" name="Stroomverbruik_reset" id="button" value="opnieuw">
+            </form>
+	</div>
+</div>
+<div id="wrapper">
+	<div id="first">
+        <div class="schakelaarnaam">Gasverbruik</div>
+        	<form class="formulier" name="Gasverbruik" method="post" action="">
+           		<label for="datum"/>
+            	<input type="date" name="datum" id="datum" placeholder="dd-mm-jjjj">
+            	<label for="meterstand"/>
+            	<input type="number" min="40000" step="0.001" name="meterstand" id="meterstand" placeholder="Meterstand" required>
+                <br/>
+				<input class="button" type="submit" name="gasverbruik_klaar" id="button" value="opslaan">
+				<input class="buttonfout" type="reset" name="gasverbruik_reset" id="button" value="opnieuw">
+			</form>
+
+	</div>
+</div>
+
+<div id="wrapper">
+	<div id="first">
+	<div class="schakelaarnaam">Verbruiksmonitor</div>
+		<div id="border">
+            <a href="grafiek.htm"><img src="h1_07.png"/></a>
+    	</div>
+    </div>
+</div>
+<footer>
+<ul>
+	<li><a href="#Top">Peertje | Het Lichtschakelsysteem van LdV46</a></li>
+</ul>
+</footer>
+
+</body>
+</html>

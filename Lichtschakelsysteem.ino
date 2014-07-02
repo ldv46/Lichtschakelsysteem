@@ -14,7 +14,7 @@ EEPROMWearLeveler eepromwl(4096, 128);
 #include "RemoteReceiver.h"
 #include "TimedAction.h"
 #include <avr/wdt.h>
-ActionTransmitter actionTransmitter(7, 157, 6);
+ElroTransmitter elroTransmitter(7);
 #include "variabelen.h"
 #include "eepromwl.h"
 #include "RTC.h"
@@ -28,9 +28,11 @@ DNSClient Dns;
 #include <Flash.h>
 #include "sdkaart.h"
 #include <TinyWebServer.h>
+#include "remote.h"
+#include "xml.h"
 #include "netwerk.h"
 #include "NTP.h"
-#include "remote.h"
+
 
 
 void setup()
@@ -47,9 +49,7 @@ void setup()
   pinMode(4, OUTPUT); //SS SDkaart
   digitalWrite(10, HIGH);
   digitalWrite(4, HIGH);
-  LED('B');
   SDinit();
-  LED('W');
   Netwerkinit();
   EEPROMinit();
   RTCopstart();
@@ -64,9 +64,6 @@ void loop()
   wdt_reset();
   web.process();
   ntpsync.check();
-  if(Serial.available()) {
-   if(Serial.read() == 'r') ShowSockStatus();
-  }
 }
 
 void LED(char kleur){

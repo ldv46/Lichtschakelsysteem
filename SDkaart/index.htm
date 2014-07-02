@@ -1,0 +1,313 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Peertje - Schakelaars &amp; Dimmers</title>
+<!-- Koppeling CSS -->
+<link rel="stylesheet" href="peertje.css">
+<!-- schalen-->
+<meta name="viewport" content="initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0,height=device-height,width=device-width,target-densityDpi=device-dpi">
+<!-- scripts tbv XML --> 
+<script language="javascript" type="application/javascript">
+
+ function getXmlHttpRequestObject() {
+
+	 if (window.XMLHttpRequest) {
+
+		 return new XMLHttpRequest();
+
+	 } else if (window.ActiveXObject) {
+
+		 return new ActiveXObject("Microsoft.XMLHTTP");
+
+	 } else {
+
+		 alert("Your Browser does not support AJAX!\nIt's about time to upgrade don't you think?");
+
+	 }
+
+ }
+
+ //XmlHttpRequest object
+
+ var req = getXmlHttpRequestObject();
+
+ function getRequest(resource) {
+
+ 	// handle the case where a querystring is not detected
+
+	var char = "&";
+
+ 	if(resource.indexOf("?", 0) == -1) {
+
+		char = "?";
+
+	}
+
+	if (req.readyState == 4 || req.readyState == 0) {
+
+		req.open("GET", resource + char + 'ms=' + new Date().getTime(), true);
+
+		req.onreadystatechange = handleResponse;
+
+		req.send(null);
+
+		return false;
+
+	 }
+
+ }
+
+	function handleResponse() {
+
+		if (req.readyState == 4) {
+
+			parseState(req.responseXML);
+
+		}
+
+	} 
+	//Deze functie checkt de knoppen
+	function schakelaarcheck(schakelaar, statusknop){
+        	if (statusknop == 1){
+            		schakelaar.checked = true;
+       		 } else {
+			schakelaar.checked = false;
+		 }
+    	}
+
+	function dimmercheck(dimmer, waarde){
+        	dimmer.value = waarde;
+    	}
+
+	function parseState(xDoc){
+
+		if(xDoc == null)
+
+		return
+
+		schakelaarcheck(schakelaar1, xDoc.getElementsByTagName("schakelaar1")[0].childNodes[0].nodeValue);
+		schakelaarcheck(schakelaar2, xDoc.getElementsByTagName("schakelaar2")[0].childNodes[0].nodeValue);
+		schakelaarcheck(schakelaar3, xDoc.getElementsByTagName("schakelaar3")[0].childNodes[0].nodeValue);
+		schakelaarcheck(schakelaar4, xDoc.getElementsByTagName("schakelaar4")[0].childNodes[0].nodeValue);
+		schakelaarcheck(schakelaar5, xDoc.getElementsByTagName("schakelaar5")[0].childNodes[0].nodeValue);
+		schakelaarcheck(schakelaar6, xDoc.getElementsByTagName("schakelaar6")[0].childNodes[0].nodeValue);
+		
+		dimmercheck(dimmer1, xDoc.getElementsByTagName("dimmer1")[0].childNodes[0].nodeValue);
+		dimmercheck(dimmer2, xDoc.getElementsByTagName("dimmer2")[0].childNodes[0].nodeValue);
+		dimmercheck(dimmer3, xDoc.getElementsByTagName("dimmer3")[0].childNodes[0].nodeValue);
+		dimmercheck(dimmer4, xDoc.getElementsByTagName("dimmer4")[0].childNodes[0].nodeValue);
+		
+		target = document.getElementById("DatumTijd");
+		target.innerHTML = xDoc.getElementsByTagName("DatumTijd")[0].childNodes[0].nodeValue;
+	}
+	
+	function schakelaar(schakelaar){
+        	var xmlHttp = null;
+    		xmlHttp = new XMLHttpRequest();
+    		xmlHttp.open( "GET", schakelaar, true );
+    		xmlHttp.send( null );
+    		return xmlHttp.responseText;
+    	}
+	
+	function dimmer(dimmer){
+        	var xmlHttp = null;
+    		xmlHttp = new XMLHttpRequest();
+    		xmlHttp.open( "GET", dimmer + "/" + dimmer.value.toString(), true );
+    		xmlHttp.send( null );
+    		return xmlHttp.responseText;
+    	}
+
+	function alloff(){
+        	var xmlHttp = null;
+    		xmlHttp = new XMLHttpRequest();
+    		xmlHttp.open( "GET", "alloff", true );
+    		xmlHttp.send( null );
+    		return xmlHttp.responseText;
+    	}
+
+</script>
+<!-- scripts tbv draaiknop --> 
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
+<script src="knob.js"></script>
+<script>
+            $(function($) {
+                $(".knob").knob({
+                    change : function (value) {
+                        //console.log("change : " + value);
+                    },
+                    release : function (value) {
+                        //console.log(this.$.attr('value'));
+                        console.log("release : " + value);
+                    },
+                    cancel : function () {
+                        console.log("cancel : ", this);
+                    },
+                    /*format : function (value) {
+                        return value + '%';
+                    },*/
+                    draw : function () {
+
+                        // "tron" case
+                        if(this.$.data('skin') == 'tron') {
+
+                            this.cursorExt = 0.3;
+
+                            var a = this.arc(this.cv)  // Arc
+                                , pa                   // Previous arc
+                                , r = 1;
+
+                            this.g.lineWidth = this.lineWidth;
+
+                            if (this.o.displayPrevious) {
+                                pa = this.arc(this.v);
+                                this.g.beginPath();
+                                this.g.strokeStyle = this.pColor;
+                                this.g.arc(this.xy, this.xy, this.radius - this.lineWidth, pa.s, pa.e, pa.d);
+                                this.g.stroke();
+                            }
+
+                            this.g.beginPath();
+                            this.g.strokeStyle = r ? this.o.fgColor : this.fgColor ;
+                            this.g.arc(this.xy, this.xy, this.radius - this.lineWidth, a.s, a.e, a.d);
+                            this.g.stroke();
+
+                            this.g.lineWidth = 2;
+                            this.g.beginPath();
+                            this.g.strokeStyle = this.o.fgColor;
+                            this.g.arc( this.xy, this.xy, this.radius - this.lineWidth + 1 + this.lineWidth * 2 / 3, 0, 2 * Math.PI, false);
+                            this.g.stroke();
+
+                            return false;
+                        }
+                    }
+                });
+
+                // Example of infinite knob, iPod click wheel
+                var v, up=0,down=0,i=0
+                    ,$idir = $("div.idir")
+                    ,$ival = $("div.ival")
+                    ,incr = function() { i++; $idir.show().html("+").fadeOut(); $ival.html(i); }
+                    ,decr = function() { i--; $idir.show().html("-").fadeOut(); $ival.html(i); };
+                $("input.infinite").knob(
+                                    {
+                                    min : 0
+                                    , max : 20
+                                    , stopper : false
+                                    , change : function () {
+                                                    if(v > this.cv){
+                                                        if(up){
+                                                            decr();
+                                                            up=0;
+                                                        }else{up=1;down=0;}
+                                                    } else {
+                                                        if(v < this.cv){
+                                                            if(down){
+                                                                incr();
+                                                                down=0;
+                                                            }else{down=1;up=0;}
+                                                        }
+                                                    }
+                                                    v = this.cv;
+                                                }
+                                    });
+            });
+        </script>
+<!-- einde scripts tbv draaiknop --> 
+
+</head>
+<body>
+<script>setInterval(function(){getRequest('status.xml')}, 1000);</script>
+<!-- Menu -->
+<nav>
+	<ul>
+		<li><a href="index.htm"><img src="h1_01.png" /></a></li>
+		<li><a href="index.htm#2"><img src="h1_02.png"/></a></li>
+		<li><a href="tijd.htm"><img src="h1_03.png"/></a></li>
+		<li><a href="energie.htm"><img src="h1_04.png"/></a></li>
+		<li><a href="#5"><img src="h1_05.png"/></a></li>
+	</ul>
+</nav>
+<!-- Einde menu -->
+<h1><img src="h2_01.png"/></h1>
+	<div id="first">
+    	<div class="schakelaarnaam">Schakelaar 1</div>
+		<div class="onoffswitch">
+    	        	<input type="checkbox" name="schakelaar1" class="onoffswitch-checkbox" id="schakelaar1" onclick="schakelaar('schakelaar1')">
+        		<label class="onoffswitch-label" for="schakelaar1">
+            			<span class="onoffswitch-inner"></span>
+                		<span class="onoffswitch-switch"></span>
+  			</label>
+		</div>
+    	<div class="schakelaarnaam">Schakelaar 2</div>
+		<div class="onoffswitch">
+    	        	<input type="checkbox" name="schakelaar2" class="onoffswitch-checkbox" id="schakelaar2" onclick="schakelaar('schakelaar2')">
+        	    	<label class="onoffswitch-label" for="schakelaar2">
+            			<span class="onoffswitch-inner"></span>
+                		<span class="onoffswitch-switch"></span>
+  			</label>
+		</div>
+    	<div class="schakelaarnaam">Schakelaar 3</div>
+		<div class="onoffswitch">
+    	        	<input type="checkbox" name="schakelaar3" class="onoffswitch-checkbox" id="schakelaar3" onclick="schakelaar('schakelaar3')">
+        	    	<label class="onoffswitch-label" for="schakelaar3">
+            			<span class="onoffswitch-inner"></span>
+                		<span class="onoffswitch-switch"></span>
+  			</label>
+		</div>
+	</div>            
+	<div id="second">
+    	<div class="schakelaarnaam">Schakelaar 4</div>
+			<div class="onoffswitch">
+    	        <input type="checkbox" name="schakelaar4" class="onoffswitch-checkbox" id="schakelaar4" onclick="schakelaar('schakelaar4')">
+        	    <label class="onoffswitch-label" for="schakelaar4">
+            	<span class="onoffswitch-inner"></span>
+                <span class="onoffswitch-switch"></span>
+  				</label>
+			</div>
+    	<div class="schakelaarnaam">Schakelaar 5</div>
+			<div class="onoffswitch">
+    	        <input type="checkbox" name="schakelaar5" class="onoffswitch-checkbox" id="schakelaar5" onclick="schakelaar('schakelaar5')">
+        	    <label class="onoffswitch-label" for="schakelaar5">
+            	<span class="onoffswitch-inner"></span>
+                <span class="onoffswitch-switch"></span>
+  				</label>
+			</div>
+    	<div class="schakelaarnaam">Schakelaar 6</div>
+			<div class="onoffswitch">
+    	        <input type="checkbox" name="schakelaar6" class="onoffswitch-checkbox" id="schakelaar6" onclick="schakelaar('schakelaar6')">
+        	    <label class="onoffswitch-label" for="schakelaar6">
+            	<span class="onoffswitch-inner"></span>
+                <span class="onoffswitch-switch"></span>
+  				</label>
+			</div>
+	</div>            
+<a name="2"></a>
+<h1><a href="#Top"><img src="h2_02.png"/></a></h1>
+	<div id="first">
+    	<div class="schakelaarnaam">Dimmer 1</div>
+    		<input class="knob" type="number" id="dimmer1" data-angleOffset=-125 data-angleArc=250 data-linecap="round" data-fgColor="#2fccff" data-rotation="clockwise" value="0" onclick="dimmer('dimmer1')">
+    	<div class="schakelaarnaam">Dimmer 3</div>
+    		<input class="knob" type="number" id="dimmer2" data-angleOffset=-125 data-angleArc=250 data-linecap="round" data-fgColor="#2fccff" data-rotation="clockwise" value="60" onclick="dimmer('dimmer2')">
+    </div>
+    <div id="second">
+    	<div class="schakelaarnaam">Dimmer 2</div>
+    		<input class="knob" type="number" id="dimmer3" data-angleOffset=-125 data-angleArc=250 data-linecap="round" data-fgColor="#2fccff" data-rotation="clockwise" value="30" onclick="dimmer('dimmer3')">
+    	<div class="schakelaarnaam">Dimmer 4</div>
+    		<input class="knob" type="number" id="dimmer4" data-angleOffset=-125 data-angleArc=250 data-linecap="round" data-fgColor="#2fccff" data-rotation="clockwise" value="90" onclick="dimmer('dimmer4')">
+    </div>
+<a name="5"></a>
+<h1><img src="h2_05.png"/></h1>
+	<div id="first">
+		<input class="killbutton" type="submit" name="kill" id="button" value="Alles uitschakelen" onclick="alloff()">	
+    	</div>
+
+<footer>
+<ul>
+	<li><a href="#Top">Peertje | Het Lichtschakelsysteem van LdV46</a></li>
+<div id="DatumTijd">00/00/00 00:00:00</div> 
+</ul>
+</footer>
+
+</body>
+</html>
