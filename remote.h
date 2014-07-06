@@ -7,9 +7,9 @@ unsigned long lamp5code = actionTransmitter.getTelegram(9,'C',true);
 unsigned long lamp6code = actionTransmitter.getTelegram(9,'C',false);
 //Lampcode huiscode 18
 char lamp1 = 'A';
-char lamp2 = 'D';
-char lamp3 = 'B';
-char lamp4 = 'C';
+char lamp2 = 'B';
+char lamp3 = 'C';
+char lamp4 = 'D';
 //Lampcode huiscode 19
 char lamp5 = 'A';
 char lamp6 = 'B';
