@@ -14,7 +14,7 @@ EEPROMWearLeveler eepromwl(4096, 128);
 #include "RemoteReceiver.h"
 #include "TimedAction.h"
 #include <avr/wdt.h>
-ActionTransmitter actionTransmitter(7);
+ActionTransmitter actionTransmitter(7, 155, 5);
 #include "variabelen.h"
 #include "eepromwl.h"
 #include "RTC.h"
@@ -43,8 +43,8 @@ void setup()
   pinMode(3, OUTPUT);pinMode(5, OUTPUT);pinMode(6, OUTPUT); //(R/G/B)
   pinMode(7, OUTPUT); //433Mhz zender
   pinMode(2, INPUT); //433Mhz ontvanger
-  pinMode(SS_PIN, OUTPUT); //SS Ethernet
-  digitalWrite(SS_PIN, HIGH);
+  pinMode(53, OUTPUT); //SS Ethernet
+  digitalWrite(53, HIGH);
   pinMode(10, OUTPUT); //SS Ethernet
   pinMode(4, OUTPUT); //SS SDkaart
   digitalWrite(10, HIGH);
